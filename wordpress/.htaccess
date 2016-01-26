@@ -1,0 +1,12 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /wordpress/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{HTTP_HOST} ^localhost\$ [NC]
+RewriteRule ^(.*)$ http://local.dev/$1 [R=301,L]
+RewriteRule . /wordpress/index.php [L]
+</IfModule>
+
+# END WordPress
