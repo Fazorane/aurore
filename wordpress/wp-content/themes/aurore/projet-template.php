@@ -19,7 +19,7 @@ get_header(); ?>
 <!-- Tout le contenu de la page-->
 
 <div id="fullpage">
-	<div class="section" id="sectionun">
+	<div class="section" id="sectionu">
 		<div class="intro columns small-12 medium-12 large-12">
 			<div class="flex-video" id="video_projet">
 			<?php echo  $video; ?>

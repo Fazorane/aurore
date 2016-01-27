@@ -7,6 +7,8 @@
 
 /*Menu*/
 function get_menu() {
+
+	global $post;
 	
     $args = array(
         'order'                  => 'ASC',
@@ -22,27 +24,32 @@ function get_menu() {
 	$items = wp_get_nav_menu_items( 'menu-principal', $args );
 
 	foreach ($items as $i => $item) {
+		if (isset($item->object_id) && isset($post->ID)) {
+                if($item->object_id == $post->ID) {$activeClass = 'activeMenu';} else {$activeClass = '';}
+            }
+        else {
+            	$activeClass = '';
+        }
 		if($i == 0) {
 			echo '<div class="small-12 large-5 medium-5 columns">
-        		  <div class="top-bar-left">
+        		  <div class="top-bar-right">
         		  <ul class="menu">';
-			echo '<li class="'. $item->classes[0] .'"><a href="'.$item->url.'" class="center">' . $item->title . '</a></li>';
+			echo '<li class="'. $item->classes[0] . ' ' . $activeClass . '"><a href="' . $item->url . '" class="center">' . $item->title . '</a></li>';
 		}
 		else if($i == 1) {
-			echo '<li class="'. $item->classes[0] .'"><a href="'.$item->url.'" class="center">' . $item->title . '</a></li>';
+			echo '<li class="'. $item->classes[0] . ' ' . $activeClass . '"><a href="' . $item->url . '" class="center">' . $item->title . '</a></li>';
 			echo '</ul>
 				  </div>
 				  </div>
 				  <div class="small-12 center large-2 medium-2 columns">
-				  <div class="logo">
                   <a href="index.php"><img src="'. get_template_directory_uri() .'/img/logo-site.svg"></a>
-                  </div></div>';
+                  </div>';
 			echo '<div class="small-12 large-5 medium-5 columns">
         		  <div class="top-bar-right">
         		  <ul class="menu">';
 		} else {
 
-			echo '<li class="'. $item->classes[0] .'"><a href="'.$item->url.'" class="center">' . $item->title . '</a></li>';
+			echo '<li class="'. $item->classes[0] . ' ' . $activeClass . '"><a href="' . $item->url . '" class="center">' . $item->title . '</a></li>';
 
 		}
 	}
@@ -88,7 +95,7 @@ add_action( 'wp_ajax_nopriv_get_articles', 'get_articles' );
 add_action( 'wp_ajax_get_articles', 'get_articles' );
 function get_articles($return = false) {
 
-	$cat = 'soleil';
+	$cat = 'energie';
 
 	if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 		$cat = $_GET['cat'];

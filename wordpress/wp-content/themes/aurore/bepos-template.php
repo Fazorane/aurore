@@ -13,6 +13,11 @@
 
 get_header(); ?>
 
+<?php
+	$titreSection2 = get_field('title_section');
+	$infosCarousel = get_field('carousel');
+?>
+
 <div id="fullpage" class="bps container">
 	<div class="section " id="section_bepos">
 		<div class="intro columns small-12 medium-12 large-12">
@@ -43,37 +48,25 @@ get_header(); ?>
 		<h1>Les bons gestes</h1>
 		<div class="carousel-container columns large-12 medium-12 small-12">
 			<div id="carousel">
-				<div class="carousel-feature">
-					<a href="#">
-						<img class="carousel-image" alt="Image Caption" src="<?php echo get_template_directory_uri(); ?>/img/carousel-1.jpg">
-						<h3>Bon geste</h3>
-						<div class="carousel-caption">
-							<!--<p>
-							Fermer les portes des pièces non chauffées, pour maintenir la température de celles qui le sont.
-							</p>-->
-						</div>
-					</a>
-				</div>
-				<div class="carousel-feature">
-					<a href="#">
-						<img class="carousel-image" alt="Image Caption" src="<?php echo get_template_directory_uri(); ?>/img/carousel-2.jpg">
-						<h3>Bon geste</h3>
-					</a>
-				</div>
-				<div class="carousel-feature">
-					<a href="#">
-						<img class="carousel-image" style="border-raduis : 50%;" alt="Image Caption" src="<?php echo get_template_directory_uri(); ?>/img/carousel-3.jpg">
-						<h3>Bon geste</h3>
-					</a>
-				</div>
-				<div class="carousel-feature">
-				<a href="#">
-					<img class="carousel-image" alt="Image Caption" src="<?php echo get_template_directory_uri(); ?>/img/carousel-3.jpg">
-					<h3>Bon geste</h3>
-				
-				</a>
-				</div>
+				<?php 
+					foreach ($infosCarousel as $infoCarousel) {
+						echo '<div class="carousel-feature">
+								<a href="#">
+									<img class="carousel-image" alt="Image Caption" src="'. $infoCarousel['image']['sizes']['thumbnail'] .'">
+									<h3>'. $infoCarousel['titre'] .'</h3>
+									<div class="carousel-caption">
+										<p>'. $infoCarousel['caption'] .'</p>
+									</div>
+								</a>
+							</div>';
+					}
+
+				?>
 			</div>
+		<div class="btns">
+     		<a id="but_prev" href="#"><img src="<?php echo get_template_directory_uri();?>/img/arrow-left.png"></a>
+     		<a id="but_next" href="#"><img src="<?php echo get_template_directory_uri();?>/img/arrow-right.png"></a>
+    	</div>
 		</div>
 	</div>
 	
