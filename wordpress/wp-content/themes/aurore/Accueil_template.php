@@ -33,13 +33,13 @@ get_header(); ?>
 
 	<div class="row">
 		<div class="small-12 large-2 medium-6 columns" id="index_jeu">
-		<a href="jeu.html"><img src="http://localhost/wordpress/wp-content/themes/aurore/img/manette.png" alt="jeu"/></a><br/>
-		<p class="lien_accueil"><a href="jeu.html">Découvrir <br/> le jeu Aurore</a></p>
+		<a href="le-jeu.php"><img src="<?php echo get_template_directory_uri();?>/img/manette.png" alt="jeu"/></a><br/>
+		<p class="lien_accueil"><a href="le-jeu.php">Découvrir <br/> le jeu Aurore</a></p>
     </div>
 
     <div class="small-12 large-2 medium-6 columns" id="index_bepos">
-		<a href="maisonbepos.html"> <img src="http://localhost/wordpress/wp-content/themes/aurore/img/maison_bepos.png" alt="maison bepos"/></a><br/>
-		<p class="lien_accueil"><a href="jeu.html">En savoir plus <br/>sur la maison </br>BEPOS</a></p>
+		<a href="la-maison-bepos.php"> <img src="<?php echo get_template_directory_uri();?>/img/maison_bepos.png" alt="maison bepos"/></a><br/>
+		<p class="lien_accueil"><a href="la-maison-bepos.php">En savoir plus <br/>sur la maison </br>BEPOS</a></p>
 	</div>
 
     </div>
